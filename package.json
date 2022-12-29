@@ -1,0 +1,15 @@
+{
+    "name": "newman-jenkins-docker",
+    "version": "1.0.0",
+    "description": "Automate test with postman newman docker jenkins",
+    "directories": {
+      "test": "tests"
+    },
+    "scripts": {
+      "api-tests-production": "newman run test-scripts/Jsonplaceholder.com.postman_collection.json --reporters cli,junit --reporter-junit-export newman.xml"
+    },
+    "author": "sarawutt bureekeaw",
+    "dependencies": {
+      "newman": "^3.5.2"
+    }
+  }

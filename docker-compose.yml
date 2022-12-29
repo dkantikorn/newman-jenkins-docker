@@ -1,0 +1,33 @@
+version: '3.6'
+
+services: 
+
+  jenkins_master:
+    build: ./master/Dockerfile
+    image: sarawutt/jenkins-master
+    container_name: jenkins-master
+    platform: linux/amd64
+    restart: on-failure
+    ports: 
+      - 7000:7000
+      - 50000:50000
+    environment: 
+      - JENKINS_OPTS="--httpPort=7000"
+      - JENKINS_SLAVE_AGENT_PORT=50000
+    volumes: 
+      - jenkins_home: /var/jenkins_home
+    depends_on:
+      - jenkins_data
+  
+  jenkins_data:
+    build: ./data/Dockerfile
+    image: sarawutt/jenkins-data
+    container_name: jenkins-data
+    platform: linux/amd64
+
+volumes: 
+  jenkins_home:
+
+networks: 
+  nt_mysql:
+    driver: bridge
