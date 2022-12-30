@@ -22,3 +22,32 @@ $ docker run -p 8080:8080 -p 50000:50000 --name=jenkins-master --volumes-from=je
 
 ## Open Browser http://localhost:8080
 $ docker exec jenkins-master cat /var/jenkins_home/secrets/initialAdminPassword
+
+
+## Jenkins pipeline
+```bash
+    pipeline {
+    agent any
+    
+    stages {
+            
+        stage('Cloning Git') {
+        steps {
+            git 'https://github.com/dkantikorn/newman-jenkins-docker.git'
+        }
+        }
+        
+        stage('Install dependencies') {
+        steps {
+            sh 'npm install'
+        }
+        }
+        
+        stage('Automate test') {
+        steps {
+            sh 'cd /var/jenkins_home/newman-jenkins-docker && npm run api-tests-production'
+        }
+        }      
+    }
+    }
+```
