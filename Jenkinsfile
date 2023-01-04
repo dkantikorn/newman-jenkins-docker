@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
             
-        // stage('Cloning Git repo') {
+        // stage('Cloning Git repo edit') {
         //     steps {
         //         echo 'Clone source code from git repository.'
         //         git 'https://github.com/dkantikorn/newman-jenkins-docker.git'
