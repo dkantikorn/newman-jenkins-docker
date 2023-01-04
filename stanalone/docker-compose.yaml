@@ -1,0 +1,11 @@
+version: '3.6'
+
+services: 
+
+  jenkins_stanalone:
+    build: .
+    image: sarawutt/jenkins-stanalone:1.0
+    container_name: jenkins-stanalone2
+    ports: 
+      - 8080:8080
+      - 50000:50000
