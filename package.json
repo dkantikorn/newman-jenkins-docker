@@ -6,7 +6,7 @@
       "test": "tests"
     },
     "scripts": {
-      "api-tests-production": "newman run test-scripts/Jsonplaceholder.com.postman_collection.json --reporters cli,junit --reporter-junit-export newman.xml --color on"
+      "api-tests-production": "newman run test-scripts/Jsonplaceholder.com.postman_collection.json --reporters cli,junit --reporter-junit-export newman.xml --color=on"
     },
     "author": "sarawutt bureekeaw",
     "dependencies": {
