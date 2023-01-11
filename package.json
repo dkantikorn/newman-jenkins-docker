@@ -6,7 +6,9 @@
       "test": "tests"
     },
     "scripts": {
-      "api-tests-production": "newman run test-scripts/Jsonplaceholder.com.postman_collection.json --reporters cli,junit --reporter-junit-export newman.xml"
+      "api-tests-production": "TODAY=$(date \"+%Y%m%d_%H%M%S\") && newman run test-scripts/Jsonplaceholder.com.postman_collection.json --reporters cli,junit,html --reporter-html-export ./test-reports/newman_simple_$TODAY.html",
+      "api-tests-production-env": "TODAY=$(date \"+%Y%m%d_%H%M%S\") && newman run test-scripts/Jsonplaceholder.com.postman_collection.json -e test-scripts/automate_test_prod.postman_environment.json  -r cli,junit,html --reporter-junit-export ./test-reports/newman_environment_$TODAY.html",
+      "api-tests-production-env-data": "TODAY=$(date \"+%Y%m%d_%H%M%S\") && newman run test-scripts/Jsonplaceholder.com.postman_collection_env_data.json -e test-scripts/automate_test_prod.postman_environment.json -d test-scripts/test_data.csv -r cli,junit,html --reporter-junit-export ./test-reports/newman_$TODAY.html"
     },
     "author": "sarawutt bureekeaw",
     "dependencies": {
